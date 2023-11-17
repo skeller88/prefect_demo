@@ -27,6 +27,16 @@ def run_validation_simulation(test_phrase: str, model_id: str):
 
 @flow(log_prints=True)
 def run_validation_simulations(test_phrases: List[str], model_id: str):
+    task_results = []
+    for test_phrase in test_phrases:
+        task_result = run_validation_simulation(test_phrase, model_id)
+        task_results.append(task_result)
+
+    return task_results
+
+
+@flow(log_prints=True)
+def run_other_stuff(test_phrases: List[str], model_id: str):
     for test_phrase in test_phrases:
         run_validation_simulation(test_phrase, model_id)
 
